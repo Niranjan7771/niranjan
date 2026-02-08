@@ -1,0 +1,150 @@
+.project-card-container {
+    perspective: 1000px;
+    height: 400px;
+    width: 100%;
+}
+
+.project-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.project-card-front,
+.project-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Front Styling */
+.project-card-front {
+    background-color: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image-box {
+    height: 50%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+}
+
+.card-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.tech-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.tech-tags span {
+    font-size: 0.75rem;
+    background: rgba(255, 0, 51, 0.1);
+    color: var(--accent-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* Back Styling */
+.project-card-back {
+    background-color: #111;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: radial-gradient(circle at center, #1a1a1a, #000);
+    border: 1px solid var(--accent-color);
+}
+
+.back-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.project-card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-card-back ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.project-card-back li {
+    font-family: var(--font-mono);
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.back-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-small.glass {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-small:hover {
+    transform: scale(1.05);
+}

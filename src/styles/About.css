@@ -1,0 +1,173 @@
+.about-section {
+    background-color: var(--bg-secondary);
+    padding: 8rem 2rem;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+/* Left Image */
+.about-left {
+    position: relative;
+    padding: 2rem;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.inset-4 {
+    inset: -1rem;
+}
+
+.rotate-6 {
+    transform: rotate(6deg);
+}
+
+.-rotate-6 {
+    transform: rotate(-6deg);
+}
+
+.rounded-xl {
+    border-radius: 0.75rem;
+}
+
+.opacity-20 {
+    opacity: 0.2;
+}
+
+.opacity-5 {
+    opacity: 0.05;
+}
+
+.bg-brand-neon {
+    background-color: var(--accent-color);
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.border {
+    border-width: 1px;
+}
+
+.border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.75rem;
+    opacity: 0.9;
+}
+
+.about-img-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.text-neon {
+    color: var(--accent-color);
+}
+
+.mono {
+    font-family: var(--font-mono);
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+/* Right Content */
+.section-title-left {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.about-desc {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+.skills-grid-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.skill-box {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    border-left-width: 4px;
+    border-left-style: solid;
+}
+
+.skill-box h4 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+}
+
+.skill-box p {
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+.border-neon {
+    border-left-color: var(--accent-color);
+}
+
+.border-blue {
+    border-left-color: #3b82f6;
+}
+
+.border-purple {
+    border-left-color: #a855f7;
+}
+
+.border-green {
+    border-left-color: #22c55e;
+}
+
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-left {
+        order: -1;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
