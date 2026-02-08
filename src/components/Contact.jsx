@@ -9,49 +9,45 @@ const Contact = () => {
     return (
         <section id="contact" className="contact-section">
             <ThreatMapGlobe />
+
             <div className="contact-content-relative">
                 <h2 className="section-title">
-                    <span className="text-bracket">&lt;</span> INITIALIZE_COMMS <span className="text-bracket">/&gt;</span>
+                    <span className="text-bracket">&lt;</span> COMMAND_UPLINK <span className="text-bracket">/&gt;</span>
                 </h2>
 
-                <div className="contact-terminal glass">
-                    <div className="terminal-header">
-                        <span className="dot red"></span>
-                        <span className="dot yellow"></span>
-                        <span className="dot green"></span>
-                        <span className="terminal-title">secure_comm_link.sh</span>
-                    </div>
+                <div className="holo-grid">
+                    {/* LinkedIn Card */}
+                    <a href={PROFILE.socials.linkedin} target="_blank" rel="noopener noreferrer" className="holo-card">
+                        <div className="holo-content">
+                            <FaLinkedin className="holo-icon" />
+                            <h3 className="holo-title">LINKEDIN_UPLINK</h3>
+                            <p className="holo-status">STATUS: <span className="text-neon">ONLINE</span></p>
+                            <div className="scan-line"></div>
+                        </div>
+                        <div className="corner-brackets"></div>
+                    </a>
 
-                    <div className="terminal-body">
-                        <div className="cmd-line">
-                            <span className="prompt">root@niranjan:~#</span> ./send_message --target=linkedin --user
+                    {/* Email Card */}
+                    <a href={`mailto:${PROFILE.socials.email}`} className="holo-card featured">
+                        <div className="holo-content">
+                            <FaEnvelope className="holo-icon" />
+                            <h3 className="holo-title">SECURE_MAIL_RELAY</h3>
+                            <p className="holo-status">ENCRYPTION: <span className="text-neon">PGP_READY</span></p>
+                            <div className="scan-line"></div>
                         </div>
-                        <div className="output">
-                            Establishing encrypted handshake... <span className="success">[OK]</span><br />
-                            Click below to open channel:
-                        </div>
-                        <a href={PROFILE.socials.linkedin} target="_blank" rel="noopener noreferrer" className="terminal-link">
-                            &gt; CONNECT_LINKEDIN
-                        </a>
+                        <div className="corner-brackets"></div>
+                    </a>
 
-                        <div className="cmd-line mt-4">
-                            <span className="prompt">root@niranjan:~#</span> ./send_message --target=email --user
+                    {/* GitHub Card */}
+                    <a href={PROFILE.socials.github} target="_blank" rel="noopener noreferrer" className="holo-card">
+                        <div className="holo-content">
+                            <FaGithub className="holo-icon" />
+                            <h3 className="holo-title">GITHUB_REPO</h3>
+                            <p className="holo-status">ACCESS: <span className="text-neon">PUBLIC</span></p>
+                            <div className="scan-line"></div>
                         </div>
-                        <div className="output">
-                            Preparing SMTP relay... <span className="success">[OK]</span><br />
-                            Click to compose payload:
-                        </div>
-                        <a href={`mailto:${PROFILE.socials.email}`} className="terminal-link">
-                            &gt; {PROFILE.socials.email}
-                        </a>
-
-                        <div className="cmd-line mt-4">
-                            <span className="prompt">root@niranjan:~#</span> exit
-                        </div>
-                        <div className="output blink">
-                            Session terminating...
-                        </div>
-                    </div>
+                        <div className="corner-brackets"></div>
+                    </a>
                 </div>
 
                 <div className="hud-footer-container">

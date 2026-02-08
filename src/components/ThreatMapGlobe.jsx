@@ -9,9 +9,9 @@ const GlobePoints = (props) => {
 
     // Generate random points in a sphere (simpler, dependency-free)
     const sphere = useMemo(() => {
-        const positions = new Float32Array(5000 * 3); // 5000 points * 3 coords
+        const positions = new Float32Array(7000 * 3); // More points
         const radius = 1.5;
-        for (let i = 0; i < 5000; i++) {
+        for (let i = 0; i < 7000; i++) {
             const u = Math.random();
             const v = Math.random();
             const theta = 2 * Math.PI * u;
@@ -38,10 +38,10 @@ const GlobePoints = (props) => {
                 <PointMaterial
                     transparent
                     color="#ff0033"
-                    size={0.008} // Slightly larger
+                    size={0.012} // Increased visibility
                     sizeAttenuation={true}
                     depthWrite={false}
-                    opacity={0.8}
+                    opacity={1.0} // Full opacity
                 />
             </Points>
         </group>

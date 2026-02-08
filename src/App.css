@@ -3,4 +3,12 @@
   min-height: 100vh;
   position: relative;
   background-color: var(--bg-color);
+  cursor: crosshair;
+  /* Tactical Cursor */
+}
+
+/* Force crosshair on text but pointer on links */
+a,
+button {
+  cursor: pointer;
 }

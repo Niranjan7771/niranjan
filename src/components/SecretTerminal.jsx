@@ -71,6 +71,7 @@ const SecretTerminal = () => {
         <>
             {/* Floating Terminal Toggle Button */}
             <motion.button
+                className="terminal-toggle-btn"
                 onClick={() => setIsOpen(!isOpen)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -99,6 +100,7 @@ const SecretTerminal = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
+                        className="secret-terminal-window"
                         initial={{ y: '-100%' }}
                         animate={{ y: 0 }}
                         exit={{ y: '-100%' }}

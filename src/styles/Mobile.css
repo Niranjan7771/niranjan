@@ -1,0 +1,169 @@
+/* Navbar Mobile Fixes */
+@media (max-width: 768px) {
+    .navbar-container {
+        width: 95%;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    html {
+        font-size: 14px;
+        /* Scale down base font */
+    }
+
+    section {
+        overflow-x: hidden;
+        /* Prevent horizontal scroll */
+    }
+}
+
+/* Hero Mobile Fixes */
+@media (max-width: 768px) {
+    .hero-section {
+        height: auto;
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .hero-left {
+        order: 2;
+        align-items: center;
+    }
+
+    .hero-right {
+        order: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .glitch-header {
+        font-size: 2.2rem;
+    }
+
+    .hero-desc {
+        font-size: 0.9rem;
+        text-align: left;
+        margin: 1.5rem 0;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .cyber-card {
+        max-width: 320px;
+    }
+}
+
+/* About Mobile Fixes */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 0;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-text-panel {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .status-indicators {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}
+
+/* Projects Mobile Fixes */
+@media (max-width: 768px) {
+    .projects-section {
+        padding: 60px 15px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+/* Contact Mobile Fixes */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 60px 15px;
+    }
+
+    .holo-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .holo-card {
+        padding: 30px 15px;
+    }
+
+    .footer-bar {
+        padding: 20px 5%;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* Secret Terminal Mobile Fixes */
+@media (max-width: 768px) {
+    .secret-terminal-window {
+        height: 100vh !important;
+        padding: 15px !important;
+    }
+
+    .terminal-toggle-btn {
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+
+/* Boot Screen Mobile Fixes */
+@media (max-width: 768px) {
+    .boot-screen {
+        padding: 20px !important;
+    }
+
+    .boot-text-container {
+        font-size: 11px !important;
+    }
+}
+
+/* Resume Mobile Fixes */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 20px;
+    }
+
+    .timeline-dot {
+        left: -26px;
+    }
+}
