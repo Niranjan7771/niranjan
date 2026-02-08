@@ -4,13 +4,15 @@
     position: relative;
     padding-top: 25px;
     margin-bottom: 30px;
-    transition: all 0.3s;
-    overflow: hidden;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    overflow: visible;
+    /* Important for 3D elements to pop out */
+    transform-style: preserve-3d;
 }
 
 .mission-file:hover {
     border-color: var(--neon-red);
-    box-shadow: 0 0 20px rgba(255, 0, 51, 0.15);
+    box-shadow: 0 10px 30px rgba(255, 0, 51, 0.2);
 }
 
 .file-tab {

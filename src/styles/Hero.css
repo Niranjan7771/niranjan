@@ -48,10 +48,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:
-        linear-gradient(rgba(51, 0, 11, 0.2) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(51, 0, 11, 0.2) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-image: none;
+    /* Removed static grid */
     z-index: 2;
     pointer-events: none;
 }

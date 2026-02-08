@@ -58,7 +58,7 @@ const NetworkBackground = () => {
 const Hero = () => {
     return (
         <section id="hero" className="hero-section">
-            <NetworkBackground />
+            {/* <NetworkBackground /> */}
             <div className="hero-grid-overlay"></div> {/* Grid lines */}
 
             <div className="hero-container">

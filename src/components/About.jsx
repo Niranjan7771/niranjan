@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { ABOUT } from '../data';
 import '../styles/About.css';
 
+import SkillsGraph from './SkillsGraph';
+
 const About = () => {
     return (
         <section id="about" className="about-section">
@@ -31,20 +33,10 @@ const About = () => {
                         </div>
                     </div>
 
-                    {/* Right Column: Skills Grid */}
+                    {/* Right Column: Skills Graph */}
                     <div className="skills-panel">
-                        <h3 className="skills-header">CAPABILITIES_MATRIX</h3>
-                        <div className="skills-grid">
-                            {ABOUT.skills.map((skill, index) => (
-                                <motion.div
-                                    className="skill-hex"
-                                    key={index}
-                                    whileHover={{ scale: 1.1, borderColor: 'var(--neon-green)' }}
-                                >
-                                    <span className="skill-text">{skill}</span>
-                                </motion.div>
-                            ))}
-                        </div>
+                        <h3 className="skills-header">CAPABILITIES_MATRIX.EXE</h3>
+                        <SkillsGraph />
                     </div>
                 </div>
             </div>
