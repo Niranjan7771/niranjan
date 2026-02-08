@@ -8,35 +8,35 @@ const Resume = () => {
     return (
         <section id="resume" className="resume-section">
             <div className="max-w-4xl mx-auto px-4">
-                <h2 className="section-title">Resume <span className="text-neon">Timeline</span></h2>
+                <h2 className="section-title text-center mb-12"> <span className="text-bracket">[</span> EDUCATION_LOG <span className="text-bracket">]</span> </h2>
 
                 <div className="timeline">
                     {/* Education Item */}
                     <div className="timeline-item">
-                        <div className="timeline-content">
-                            <h3>{RESUME.education.degree}</h3>
-                            <p className="timeline-place">{RESUME.education.institution}</p>
-                            <p className="timeline-score">CGPA: 8.8/10</p>
-                            <span className="timeline-date">{RESUME.education.year}</span>
-                            <p className="timeline-desc">
-                                Specializing in Full Stack Development and Artificial Intelligence.
-                                Lead of the College Coding Club.
-                            </p>
-                        </div>
                         <div className="timeline-dot"></div>
+                        <div className="timeline-content cyber-panel">
+                            <div className="panel-header">DEGREE_INFO</div>
+                            <h3>{RESUME.education.degree}</h3>
+                            <p className="timeline-place text-neon">{RESUME.education.institution}</p>
+                            <span className="timeline-date">{RESUME.education.year}</span>
+                            {/* Note: Year/CGPA is now handled in data.js, not hardcoded here */}
+                        </div>
                     </div>
 
-                    {/* Certifications Items (Grouped) */}
-                    {RESUME.certifications.map((cert, index) => (
-                        <div className="timeline-item" key={index}>
-                            <div className="timeline-content">
-                                <h3>Certification</h3>
-                                <p className="timeline-place">{cert}</p>
-                                <span className="timeline-date">2024</span>
-                            </div>
-                            <div className="timeline-dot"></div>
+                    {/* Certification Wrapper */}
+                    <div className="timeline-item">
+                        <div className="timeline-dot"></div>
+                        <div className="timeline-content cyber-panel">
+                            <div className="panel-header">CERTIFICATIONS</div>
+                            <ul className="cert-list">
+                                {RESUME.certifications.map((cert, index) => (
+                                    <li key={index} className="cert-item">
+                                        &gt; {cert}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                    ))}
+                    </div>
                 </div>
             </div>
         </section>

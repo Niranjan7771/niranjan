@@ -1,88 +1,57 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaFingerprint, FaArrowRight } from 'react-icons/fa';
+import { FaFingerprint, FaArrowRight, FaCode } from 'react-icons/fa';
 import Tilt from 'react-parallax-tilt';
 import AsciiPortrait from './AsciiPortrait';
 import { PROFILE } from '../data';
 import '../styles/Hero.css';
 
 const NetworkBackground = () => {
-    // Keep existing Network Background
     const canvasRef = useRef(null);
-
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
-        const particleCount = 60;
-        const connectionDistance = 150;
+        const particleCount = 200; // Denser particles but smaller
 
-        const resize = () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        };
+        const resize = () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; };
 
+        // Matrix Rain / Data Stream vibe
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2 + 1;
+                this.vx = 0; // Vertical only
+                this.vy = Math.random() * 2 + 1; // Falling speed
+                this.size = Math.random() * 1.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
             }
             update() {
-                this.x += this.vx;
                 this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
+                if (this.y > height) {
+                    this.y = 0;
+                    this.x = Math.random() * width;
+                }
             }
             draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255, 0, 51, 0.4)'; // Updated to Neon Red
-                ctx.fill();
+                ctx.fillStyle = `rgba(255, 0, 51, ${this.opacity})`;
+                ctx.fillRect(this.x, this.y, 1, this.size * 5); // Rectangular bits
             }
         }
 
-        const init = () => {
-            resize();
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        };
-
+        const init = () => { resize(); particles = []; for (let i = 0; i < particleCount; i++) particles.push(new Particle()); };
         const animate = () => {
-            ctx.clearRect(0, 0, width, height);
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < connectionDistance) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 0, 51, ${1 - distance / connectionDistance})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // Trail effect
+            ctx.fillRect(0, 0, width, height);
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         };
         window.addEventListener('resize', resize);
-        init();
-        animate();
+        init(); animate();
         return () => window.removeEventListener('resize', resize);
     }, []);
-
     return <canvas ref={canvasRef} className="network-canvas" />;
 };
 
@@ -90,118 +59,86 @@ const Hero = () => {
     return (
         <section id="hero" className="hero-section">
             <NetworkBackground />
-
-            {/* Background Glow */}
-            <div className="hero-glow"></div>
+            <div className="hero-grid-overlay"></div> {/* Grid lines */}
 
             <div className="hero-container">
-                {/* Left Content */}
                 <div className="hero-left">
                     <motion.div
                         className="badge-container"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
                     >
-                        <div className="code-badge">
-                            &lt;Hello World /&gt;
+                        <div className="terminal-badge">
+                            <span className="prompt">root@niranjan:~#</span> ./init_profile.sh
                         </div>
                     </motion.div>
 
-                    <motion.h1
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                    >
-                        I'm <span className="glitch-text" data-text={PROFILE.name}>{PROFILE.name}</span>
-                    </motion.h1>
+                    <h1 className="glitch-header">
+                        <span className="typing-effect">NIRANJAN_DEV</span>
+                        <span className="cursor">█</span>
+                    </h1>
 
                     <motion.h2
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
+                        transition={{ delay: 0.5 }}
                     >
-                        Future <span className="text-gradient">CSE Engineer</span> &<br /> Full Stack Developer
+                        <span className="text-bracket">[</span> CYBERSECURITY <span className="text-bracket">]</span> &<br /> FULL_STACK_ENGINEER
                     </motion.h2>
 
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                    >
-                        {PROFILE.tagline}
-                    </motion.p>
+                    <p className="hero-desc">
+                        &gt; Specialized in building secure, scalable systems.<br />
+                        &gt; 3rd Year CSE Undergraduate.<br />
+                        &gt; Analyzing threats & architecting defenses.
+                    </p>
 
-                    <motion.div
-                        className="hero-buttons"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.8 }}
-                    >
-                        <a href="#projects" className="btn btn-primary">
-                            View Projects <FaArrowRight />
+                    <div className="hero-buttons">
+                        <a href="#projects" className="btn btn-cyber">
+                            EXECUTE_PROJECTS()
                         </a>
-                    </motion.div>
+                        <a href="#contact" className="btn btn-cyber-outline">
+                            CONTACT_PROTOCOL
+                        </a>
+                    </div>
                 </div>
 
-                {/* Right Content - 3D Card */}
                 <div className="hero-right">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
-                        animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                        transition={{ duration: 0.8, delay: 0.5 }}
-                    >
-                        <Tilt
-                            tiltMaxAngleX={15}
-                            tiltMaxAngleY={15}
-                            perspective={1000}
-                            scale={1.05}
-                            transitionSpeed={400} // Snappier
-                            className="tilt-card-wrapper"
-                            glareEnable={true}
-                            glareMaxOpacity={0.1}
-                            glareColor="#ffffff"
-                            glarePosition="all"
-                            glareBorderRadius="1rem"
-                        >
-                            <div className="hero-card">
-                                <div className="card-top">
-                                    <div className="card-image-container">
-                                        <AsciiPortrait />
-                                        <div className="card-overlay-gradient"></div>
-                                    </div>
+                    <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} perspective={1000} className="tilt-card-wrapper">
+                        <div className="cyber-card">
+                            <div className="card-header-bar">
+                                <span className="dot red"></span>
+                                <span className="dot yellow"></span>
+                                <span className="dot green"></span>
+                                <span className="bar-title">user_profile.exe</span>
+                            </div>
+                            <div className="card-content-cyber">
+                                <div className="cyber-image-frame">
+                                    <AsciiPortrait />
+                                    <div className="scan-line"></div>
                                 </div>
-                                <div className="card-bottom">
-                                    <div>
-                                        <h3 className="card-name">{PROFILE.name}</h3>
-                                        <p className="card-role">
-                                            <span className="text-neon">CSE Student</span> • Year 3
-                                        </p>
-                                        <div className="card-tags">
-                                            <span className="tag">React</span>
-                                            <span className="tag">Node.js</span>
-                                            <span className="tag">3D Web</span>
-                                        </div>
+                                <div className="cyber-stats">
+                                    <div className="stat-row">
+                                        <span className="label">NAME:</span>
+                                        <span className="value">{PROFILE.name}</span>
                                     </div>
-                                    <div className="card-footer">
-                                        <span className="id-code mono">ID: CS23B1076</span>
-                                        <FaFingerprint className="fingerprint-icon animate-pulse" />
+                                    <div className="stat-row">
+                                        <span className="label">ROLE:</span>
+                                        <span className="value">SEC_ENGINEER</span>
+                                    </div>
+                                    <div className="stat-row">
+                                        <span className="label">ID:</span>
+                                        <span className="value mono highlight">CS23B1076</span>
+                                    </div>
+                                    <div className="stat-row">
+                                        <span className="label">STATUS:</span>
+                                        <span className="value blink">ONLINE</span>
                                     </div>
                                 </div>
                             </div>
-                        </Tilt>
-                    </motion.div>
+                        </div>
+                    </Tilt>
                 </div>
             </div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                className="scroll-indicator"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-            >
-                <FaArrowRight style={{ transform: 'rotate(90deg)' }} />
-            </motion.div>
         </section>
     );
 };

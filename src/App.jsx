@@ -1,5 +1,7 @@
 
 import React, { useEffect } from 'react';
+import NoiseOverlay from './components/NoiseOverlay';
+import SecretTerminal from './components/SecretTerminal';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -30,7 +32,8 @@ function App() {
 
   return (
     <div className="App">
-
+      <NoiseOverlay />
+      <SecretTerminal />
       <Navbar />
       <Hero />
       <About />

@@ -8,32 +8,20 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const isScrolled = window.scrollY > 50;
-            if (isScrolled !== scrolled) {
-                setScrolled(isScrolled);
-            }
-        };
-
+        const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [scrolled]);
-
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-    };
+    const toggleMenu = () => setMenuOpen(!menuOpen);
 
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="navbar-container">
                 <a href="#hero" className="logo" onClick={() => setMenuOpen(false)}>
-                    <div className="logo-icon">
-                        <FaTerminal />
-                    </div>
-                    <span>NIRANJAN<span className="logo-accent">.DEV</span></span>
+                    <span className="logo-brace">{'{'}</span>
+                    <span className="logo-text">RED_TEAM</span>
+                    <span className="logo-brace">{'}'}</span>
                 </a>
 
                 <div className={`menu-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
@@ -43,9 +31,21 @@ const Navbar = () => {
                 </div>
 
                 <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-                    <li className="nav-item"><a href="#about" onClick={toggleMenu}>About</a></li>
-                    <li className="nav-item"><a href="#projects" onClick={toggleMenu}>Projects</a></li>
-                    <li className="nav-item"><a href="#resume" onClick={toggleMenu}>Resume</a></li>
+                    <li className="nav-item">
+                        <a href="#about" onClick={toggleMenu} className="cyber-link">
+                            <span className="link-bracket">[</span> ABOUT <span className="link-bracket">]</span>
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="#projects" onClick={toggleMenu} className="cyber-link">
+                            <span className="link-bracket">[</span> PROJECTS <span className="link-bracket">]</span>
+                        </a>
+                    </li>
+                    <li className="nav-item">
+                        <a href="#resume" onClick={toggleMenu} className="cyber-link">
+                            <span className="link-bracket">[</span> RESUME <span className="link-bracket">]</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

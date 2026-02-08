@@ -1,13 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO & Open Graph Tags -->
+  <title>Niranjan | Future CSE Engineer & Full Stack Developer</title>
+  <meta name="description"
+    content="Portfolio of Niranjan, a B.Tech CSE Student at IIITDM Kancheepuram specializing in Full Stack Development, 3D Web Experiences, and System Architecture." />
+  <meta name="keywords"
+    content="Niranjan, IIITDM Kancheepuram, CSE, Full Stack Developer, React, Python, Compiler Design, WebRTC" />
+  <meta name="author" content="Niranjan" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://niranjan.onrender.com/" />
+  <meta property="og:title" content="Niranjan | CSE Student & Developer" />
+  <meta property="og:description"
+    content="Building scalable systems and immersive web experiences. Check out my projects like LanMeet and cfg2yacc." />
+  <meta property="og:image" content="/ascii-profile.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://niranjan.onrender.com/" />
+  <meta property="twitter:title" content="Niranjan | CSE Student & Developer" />
+  <meta property="twitter:description"
+    content="Building scalable systems and immersive web experiences. Check out my projects like LanMeet and cfg2yacc." />
+  <meta property="twitter:image" content="/ascii-profile.png" />
+
+  <style>
+    /* Preloader */
+    #root {
+      opacity: 0;
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

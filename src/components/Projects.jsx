@@ -1,27 +1,28 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import ProjectCard from './ProjectCard';
 import { PROJECTS } from '../data';
+import ProjectCard from './ProjectCard';
 import '../styles/Projects.css';
 
 const Projects = () => {
     return (
         <section id="projects" className="projects-section">
-            <motion.h2
-                className="section-title"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-            >
-                Featured <span className="text-neon">Projects</span>
-            </motion.h2>
+            <div className="section-header">
+                <h2 className="section-title">
+                    <span className="text-bracket">&lt;</span> CLASSIFIED_INTEL <span className="text-bracket">/&gt;</span>
+                </h2>
+                <div className="section-subtitle">AUTHORIZED_PERSONNEL_ONLY</div>
+            </div>
+
             <div className="projects-grid">
-                {PROJECTS.map((project, index) => (
+                {PROJECTS.map(project => (
                     <ProjectCard key={project.id} project={project} />
                 ))}
             </div>
+
+            {/* Background decoration */}
+            <div className="bg-grid-lines"></div>
         </section>
     );
 };

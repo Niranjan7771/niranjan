@@ -7,7 +7,7 @@ export const PROFILE = {
   socials: {
     github: "https://github.com/Niranjan7771",
     linkedin: "https://www.linkedin.com/in/y-niranjan-b183622b5/",
-    email: "niranjan@example.com", // Update if you want
+    email: "yalamniranjan@gmail.com", 
   },
 };
 

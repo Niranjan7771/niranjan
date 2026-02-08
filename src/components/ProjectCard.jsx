@@ -1,56 +1,53 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaFolder } from 'react-icons/fa';
 import '../styles/ProjectCard.css';
 
 const ProjectCard = ({ project }) => {
-    const [isFlipped, setIsFlipped] = useState(false);
-
     return (
-        <div
-            className="project-card-container"
-            onMouseEnter={() => setIsFlipped(true)}
-            onMouseLeave={() => setIsFlipped(false)}
+        <motion.div
+            className="mission-file"
+            whileHover={{ y: -5 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
         >
-            <motion.div
-                className="project-card-inner"
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.6 }}
-            >
-                {/* Front Face */}
-                <div className="project-card-front">
-                    <div className="card-image-box">
-                        <img src={project.image} alt={project.title} />
-                        <div className="card-overlay"></div>
-                    </div>
-                    <div className="card-content">
-                        <h3>{project.title}</h3>
-                        <p>{project.description}</p>
-                        <div className="tech-tags">
-                            {project.techStack.slice(0, 3).map((tech, i) => (
-                                <span key={i}>{tech}</span>
-                            ))}
-                        </div>
-                    </div>
+            <div className="file-tab">
+                <span className="file-id">MISSION_{project.id}</span>
+            </div>
+
+            <div className="file-body">
+                <div className="file-header">
+                    <h3 className="mission-title">{project.title.toUpperCase()}</h3>
+                    <div className="security-stamp">TOP_SECRET</div>
                 </div>
 
-                {/* Back Face */}
-                <div className="project-card-back">
-                    <FaCode className="back-icon" />
-                    <h3>Key Tech</h3>
-                    <ul>
-                        {project.techStack.map((tech, i) => (
-                            <li key={i}>{tech}</li>
-                        ))}
-                    </ul>
-                    <div className="back-links">
-                        <a href={project.githubLink} className="btn-small"><FaGithub /> Code</a>
-                        <a href={project.demoLink} className="btn-small glass"><FaExternalLinkAlt /> Live</a>
-                    </div>
+                <div className="mission-img-frame">
+                    <img src={project.image} alt={project.title} className="mission-img" />
+                    <div className="scan-line-x"></div>
                 </div>
-            </motion.div>
-        </div>
+
+                <p className="mission-brief">
+                    &gt; {project.description}
+                </p>
+
+                <div className="tech-readout">
+                    {project.techStack.map((tech, i) => (
+                        <span key={i} className="tech-tag">[{tech}]</span>
+                    ))}
+                </div>
+
+                <div className="action-protocol">
+                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="cyber-btn sm">
+                        <FaGithub /> SOURCE
+                    </a>
+                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="cyber-btn sm outline">
+                        <FaExternalLinkAlt /> DEPLOY
+                    </a>
+                </div>
+            </div>
+        </motion.div>
     );
 };
 

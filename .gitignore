@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-portfolio/DEPLOY.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +22,7 @@ portfolio/DEPLOY.md
 *.njsproj
 *.sln
 *.sw?
+
+DEPLOY.md
+
+public/profile.jpeg
