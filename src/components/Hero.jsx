@@ -140,9 +140,6 @@ const Hero = () => {
                         <a href="#projects" className="btn btn-primary">
                             View Projects <FaArrowRight />
                         </a>
-                        <a href="#prompt-builder" className="btn btn-secondary glass">
-                            <FaRobot /> Build Your Prompt
-                        </a>
                     </motion.div>
                 </div>
 
