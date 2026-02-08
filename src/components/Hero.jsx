@@ -1,68 +1,29 @@
 
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaFingerprint, FaArrowRight, FaCode } from 'react-icons/fa';
 import Tilt from 'react-parallax-tilt';
 import AsciiPortrait from './AsciiPortrait';
 import { PROFILE } from '../data';
 import '../styles/Hero.css';
 
-const NetworkBackground = () => {
-    const canvasRef = useRef(null);
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        const particleCount = 200; // Denser particles but smaller
-
-        const resize = () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; };
-
-        // Matrix Rain / Data Stream vibe
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = 0; // Vertical only
-                this.vy = Math.random() * 2 + 1; // Falling speed
-                this.size = Math.random() * 1.5;
-                this.opacity = Math.random() * 0.5 + 0.1;
-            }
-            update() {
-                this.y += this.vy;
-                if (this.y > height) {
-                    this.y = 0;
-                    this.x = Math.random() * width;
-                }
-            }
-            draw() {
-                ctx.fillStyle = `rgba(255, 0, 51, ${this.opacity})`;
-                ctx.fillRect(this.x, this.y, 1, this.size * 5); // Rectangular bits
-            }
-        }
-
-        const init = () => { resize(); particles = []; for (let i = 0; i < particleCount; i++) particles.push(new Particle()); };
-        const animate = () => {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // Trail effect
-            ctx.fillRect(0, 0, width, height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        };
-        window.addEventListener('resize', resize);
-        init(); animate();
-        return () => window.removeEventListener('resize', resize);
-    }, []);
-    return <canvas ref={canvasRef} className="network-canvas" />;
-};
-
 const Hero = () => {
+    const sectionRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end start"]
+    });
+
+    const yLeft = useTransform(scrollYProgress, [0, 1], [0, -150]);
+    const yRight = useTransform(scrollYProgress, [0, 1], [0, 50]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
     return (
-        <section id="hero" className="hero-section">
-            {/* <NetworkBackground /> */}
-            <div className="hero-grid-overlay"></div> {/* Grid lines */}
+        <section id="hero" className="hero-section" ref={sectionRef}>
+            <div className="hero-grid-overlay"></div>
 
             <div className="hero-container">
-                <div className="hero-left">
+                <motion.div className="hero-left" style={{ y: yLeft, opacity }}>
                     <motion.div
                         className="badge-container"
                         initial={{ opacity: 0, x: -20 }}
@@ -100,9 +61,9 @@ const Hero = () => {
                             CONTACT_PROTOCOL
                         </a>
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="hero-right">
+                <motion.div className="hero-right" style={{ y: yRight, opacity }}>
                     <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} perspective={1000} className="tilt-card-wrapper">
                         <div className="cyber-card">
                             <div className="card-header-bar">
@@ -137,8 +98,16 @@ const Hero = () => {
                             </div>
                         </div>
                     </Tilt>
-                </div>
+                </motion.div>
             </div>
+
+            {/* Background Decorative Parallax Text */}
+            <motion.div
+                className="parallax-bg-text"
+                style={{ y: useTransform(scrollYProgress, [0, 1], [0, 400]) }}
+            >
+                01010110 01010101 01001100 01001110 01011111 01010011 01000011 01000001 01001110
+            </motion.div>
         </section>
     );
 };

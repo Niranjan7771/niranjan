@@ -314,3 +314,17 @@ body {
         margin: 0 auto;
     }
 }
+
+.parallax-bg-text {
+    position: absolute;
+    bottom: -100px;
+    left: 10%;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255, 0, 51, 0.05);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+    font-family: 'JetBrains Mono';
+    letter-spacing: -5px;
+}

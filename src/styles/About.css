@@ -120,22 +120,3 @@
         grid-template-columns: 1fr;
     }
 }
-
-.skills-graph-container {
-    border: 1px solid var(--dark-red);
-    background: rgba(5, 5, 5, 0.4);
-    backdrop-filter: blur(5px);
-    transition: border-color 0.3s;
-    overflow: hidden;
-    position: relative;
-}
-
-.skills-graph-container:hover {
-    border-color: var(--neon-red);
-    box-shadow: 0 0 20px rgba(255, 0, 51, 0.1);
-}
-
-.graph-static-overlay {
-    pointer-events: none;
-    user-select: none;
-}
