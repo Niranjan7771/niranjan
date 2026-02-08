@@ -1,8 +1,9 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaFingerprint, FaReact, FaNodeJs, FaCube, FaArrowRight, FaRobot, FaDownload } from 'react-icons/fa';
+import { FaFingerprint, FaArrowRight } from 'react-icons/fa';
 import Tilt from 'react-parallax-tilt';
+import AsciiPortrait from './AsciiPortrait';
 import { PROFILE } from '../data';
 import '../styles/Hero.css';
 
@@ -166,11 +167,7 @@ const Hero = () => {
                             <div className="hero-card">
                                 <div className="card-top">
                                     <div className="card-image-container">
-                                        <img
-                                            src="https://via.placeholder.com/300x300?text=Profile"
-                                            alt="Niranjan"
-                                            className="card-profile-image"
-                                        />
+                                        <AsciiPortrait />
                                         <div className="card-overlay-gradient"></div>
                                     </div>
                                 </div>
@@ -187,7 +184,7 @@ const Hero = () => {
                                         </div>
                                     </div>
                                     <div className="card-footer">
-                                        <span className="id-code mono">ID: 2024-CSE-001</span>
+                                        <span className="id-code mono">ID: CS23B1076</span>
                                         <FaFingerprint className="fingerprint-icon animate-pulse" />
                                     </div>
                                 </div>
