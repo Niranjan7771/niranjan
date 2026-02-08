@@ -6,7 +6,7 @@ export const PROFILE = {
   resumeLink: "#",
   socials: {
     github: "https://github.com/Niranjan7771",
-    linkedin: "https://linkedin.com/in/niranjan-cse", // Update if you have one
+    linkedin: "https://www.linkedin.com/in/y-niranjan-b183622b5/",
     email: "niranjan@example.com", // Update if you want
   },
 };
