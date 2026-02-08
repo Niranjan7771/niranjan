@@ -3,13 +3,9 @@ import React from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import '../styles/Contact.css';
 import { PROFILE } from '../data';
-import ThreatMapGlobe from './ThreatMapGlobe';
-
 const Contact = () => {
     return (
         <section id="contact" className="contact-section">
-            <ThreatMapGlobe />
-
             <div className="contact-content-relative">
                 <h2 className="section-title">
                     <span className="text-bracket">&lt;</span> COMMAND_UPLINK <span className="text-bracket">/&gt;</span>
